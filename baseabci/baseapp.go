@@ -88,6 +88,8 @@ func NewBaseApp(name string, logger log.Logger, db dbm.DB, registerCodecFunc fun
 		option(app)
 	}
 
+	app.cms.SetPruning(store.PruneNothing)
+
 	app.registerQcpMapper()
 	app.RegisterMapper(consensus.NewConsensusMapper(cdc))
 	return app
