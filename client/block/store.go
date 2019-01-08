@@ -2,6 +2,7 @@ package block
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/QOSGroup/qbase/client/context"
 	"github.com/QOSGroup/qbase/client/types"
@@ -101,6 +102,10 @@ func tryDecodeValue(cdc *go_amino.Codec, bz []byte, useKVPairFlag bool) (interfa
 		if err == nil {
 			var pairResults []kvPairResult
 			for _, pair := range vKVPair {
+				fmt.Println(pair.Key)
+				fmt.Println(pair.Value)
+				fmt.Println("-----------------")
+
 				val, _ := tryDecodeValue(cdc, pair.Value, false)
 				pairResults = append(pairResults, kvPairResult{
 					Key:   string(pair.Key),

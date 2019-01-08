@@ -29,6 +29,9 @@ func queryAccount(ctx context.CLIContext, addr []byte) (account.Account, error) 
 	}
 
 	var acc account.Account
+				fmt.Println(addr)
+				fmt.Println(res)
+				fmt.Println("-----------------")
 	err = ctx.Codec.UnmarshalBinaryBare(res, &acc)
 	if err != nil {
 		return nil, err
